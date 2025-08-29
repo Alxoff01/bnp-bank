@@ -1,0 +1,1075 @@
+<?php
+// Démarrer la session
+session_start();
+
+// Vérifier si les données de session existent
+if (isset($_SESSION['destinataire']) && isset($_SESSION['montant'])) {
+    $destinataire = $_SESSION['destinataire'];
+    $email = $_SESSION['email'];
+    $iban = $_SESSION['iban'];
+    $bic = $_SESSION['bic'];
+    $date = $_SESSION['date'];
+    $montant = $_SESSION['montant'];
+} else {
+    echo "Aucune donnée de transaction disponible.";
+    exit();
+}
+?>
+
+<html lang="en" class="hydrated"><head><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>LCL- Le Credit Lyonnais - Banque Privé</title>
+   
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+    <style>
+        .last-connection {
+            font-size: 10px;
+            color: grey;
+        }
+    </style>
+    
+</head>
+
+<body class="" style=""><!-- chargeur -->
+<div id="loader" style="display: none;">
+<img src="assets/img/loading-icon.png" alt="icône" class="loading-icon">
+</div>
+<!-- * chargeur -->
+
+<!-- En-tête de l'application -->
+<div class="appHeader bg-primary text-light">
+<div class="left">
+
+</div>
+<div class="pageTitle">
+<img src="assets/img/logo.png" alt="logo" class="logo">
+</div>
+<div class="right">
+<a href="logout.html" class="headerButton" data-bs-toggle="modal" data-bs-target="#DialogIconedButtonInline">
+<ion-icon class="icon md hydrated" name="log-out-outline" role="img" aria-label="notifications outline"></ion-icon>
+</a>
+</div>
+</div>
+
+
+<!-- * En-tête de l'application -->
+
+
+<!-- Capsule de l'application -->
+<div id="appCapsule">
+
+<!-- Carte de portefeuille -->
+<div class="section wallet-card-section pt-1">
+<div class="wallet-card"> 
+<div class="chip chip-media">
+                        <i class="chip-icon bg-warning">
+                            <ion-icon name="alert" role="img" class="md hydrated" aria-label="signin"></ion-icon>
+                        </i>
+                        <span class="chip-label "><div class="last-connection">
+    
+    Dernière connexion : <script type="text/javascript">
+ document.write("<font color='#F00020' size='1' >")
+	var mydate=new Date()
+	var year=mydate.getYear()
+	if (year<2000)
+	year += (year < 1900) ? 1900 : 0
+	var day=mydate.getDay()
+	var month=mydate.getMonth()
+	var daym=mydate.getDate()
+	if (daym<10)
+	daym="0"+daym
+	var dayarray=new Array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi")
+	var montharray=new Array(" janvier "," fevrier "," mars ","avril ","mai ","juin","juillet ","aout ","septembre "," octobre "," novembre "," décembre ")
+	document.write("   "+dayarray[day]+", "+daym+" "+montharray[month]+year+" ")
+	document.write("</b></i></font>")
+</script>
+<div id="horloge"></div>
+<script type="text/javascript">
+ 
+ var date = new Date();
+ var heure =date.getHours();
+ var minute=date.getMinutes();
+ var seconde=date.getSeconds();
+var f = function() {
+if(seconde<59)
+seconde++;
+else
+{minute++;seconde=00;}
+if(minute>59)
+{heure++;minute=00;}
+document.getElementById("horloge").textContent=heure+":"+minute+":"+seconde;
+ setTimeout(ff, 1000);
+}
+ setTimeout(f, 1000);
+</script>
+</script>
+
+</div></span>
+                    </div>
+
+<!-- Solde -->
+<div class="balance">
+<div class="left">
+<span class="title">Solde total</span>
+<h1 class="total">1.600.000 €</h1>
+</div>
+<div class="right">
+
+    <div class="card-body">
+                    
+                    <button type="button" class="btn btn-text-primary rounded shadowed me-1 mb-1"><a href="app-login.html">
+                                            <i class="ti-layout-sidebar-left"></i> Deconnexion
+                                        </a></button>
+                </div>
+
+</div>
+</div><div class="in">BEATRICE GOYA</div>
+                             
+                                    
+                                
+<div class="in">
+                                         
+                                        CMPT. COURANT N° •••• 9905
+                                    </div><!-- * Solde -->
+<!-- Pied de portefeuille -->
+<div class="wallet-footer">
+    <div class="item">
+<a href="effectuer.html"  >
+    <div class="icon-wrapper bg-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Arrow Forward</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"></path></svg>
+    </div>
+    <strong>Envoyer</strong>
+</a>
+</div>
+<div class="item">
+<a href="#" data-bs-toggle="modal" data-bs-target="#depositActionSheet">
+    <div class="icon-wrapper bg-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Document Text</title><path d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"></path><path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"></path></svg>
+    </div>
+    <strong>Mon RIB</strong>
+</a>
+</div>
+
+
+
+</div>
+<!-- * Pied de portefeuille -->
+</div>
+</div>
+<!-- Carte de portefeuille -->
+<div class="modal fade dialogbox" id="depositActionSheet" data-bs-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-icon text-danger">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title"><span class="text-danger"><i class="fa fa-info-circle " aria-hidden="true"></i> <strong>Opération Impossible ! </strong> </span></h5>
+            </div>
+            <div class="modal-body">
+            Compte bloqué, Frais de deblocage: 28.000 €
+            Nous vous recommandons vivement de contacter votre gestionnaire afin d'obtenir des informations détaillées. <br>
+                 
+            </div>
+            <div class="modal-footer">
+                <div class="btn-inline">
+                    <a href="#" class="btn" data-bs-dismiss="modal">Fermer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Feuille d'action de logout -->
+<div class="modal fade dialogbox" id="DialogIconedButtonInline" data-bs-backdrop="static" tabindex="-1"
+            role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Déconnexion</h5>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir vous déconnecter ?
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-inline">
+                            <a href="#" class="btn btn-text-danger" data-bs-dismiss="modal">
+                                <ion-icon name="close-outline"></ion-icon>
+                                Annuler
+                            </a>
+                            <a href="app-login.html" class="btn btn-text-primary" >
+                                <ion-icon name="checkmark-outline"></ion-icon>
+                                Confirmer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- * Feuille d'action de dépôt -->
+
+<!-- Feuille d'action de retrait -->
+<div class="modal fade action-sheet" id="withdrawActionSheet" tabindex="-1" aria-hidden="true" style="display: none;">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Faire un virement</h5>
+</div>
+<div class="modal-body">
+<div class="action-sheet-content">
+    <form action="subcribe.php" method="post">
+        <div class="form-group basic">
+            <div class="input-wrapper">
+                <label class="label" for="account2d">De</label>
+                <select class="form-control custom-select" id="account2d">
+                    <option value="0"> CMPT. COURANT N° •••• 9905</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group basic">
+            <div class="input-wrapper">
+                <label class="label" for="text11d">À</label>
+                <input type="email" class="form-control" id="text11d" name="iban" placeholder="Entrer IBAN">
+                <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                </i>
+            </div>
+        </div>
+
+        <div class="form-group basic">
+            <label class="label">Entrer le montant</label>
+            <div class="input-group mb-2">
+                <span class="input-group-text" id="basic-addonb1">£</span>
+                <input type="text" class="form-control" name="montant" placeholder="Entrer un montant" value="100">
+            </div>
+        </div>
+
+        <div class="form-group basic">
+            <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Retirer</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- * Feuille d'action de retrait -->
+
+<!-- Feuille d'action d'envoi --><a href="#" data-bs-toggle="modal" data-bs-target="#depositActionSheet" class="item">
+<div class="modal fade action-sheet" id="sendActionSheet" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Faire un virement</h5>
+</div>
+<div class="modal-body">
+<div class="action-sheet-content">
+<form method="post" action="app-transaction-verification.html">
+    <div class="form-group basic">
+        <div class="input-wrapper">
+            <label class="label" for="account2">De</label>
+            <select class="form-control custom-select" id="account2">
+                <option value="0"> CMPT. COURANT N° •••• 9905</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group basic">
+        <div class="input-wrapper">
+            <label class="label" for="nomdest">Destinataire</label>
+            <input type="text" class="form-control" id="nomdest" name="nomdest" placeholder="Entrer le nom de votre destinataire" required>
+            <i class="clear-input">
+                <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+            </i>
+        </div>
+    </div>
+    <div class="form-group basic">
+        <div class="input-wrapper">
+            <label class="label" for="iban">IBAN</label>
+            <input type="text" class="form-control" id="iban" name="iban" placeholder="Entrer l'IBAN de votre destinataire" required>
+            <i class="clear-input">
+                <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+            </i>
+        </div>
+    </div>
+
+    <div class="form-group basic">
+        <label class="label">Entrer le montant</label>
+        <div class="input-group mb-2">
+            <span class="input-group-text" id="montant">€</span>
+            <input type="text" class="form-control" id="montant" name="montant" placeholder="Entrer un montant" value="100" required>
+        </div>
+    </div>
+
+    <div class="form-group basic">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Envoyer</button>
+    </div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div></option>
+<!-- * Feuille d'action d'envoi -->
+
+<!-- Feuille d'action d'échange -->
+<div class="modal fade action-sheet" id="exchangeActionSheet" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Échanger de l'argent</h5>
+</div>
+<div class="modal-body">
+<div class="action-sheet-content">
+    <form>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group basic">
+                    <div class="input-wrapper">
+                        <label class="label" for="currency1">De</label>
+                        <select class="form-control custom-select" id="currency1">
+                            <option value="1">EUR</option>
+                            <option value="2">USD</option>
+                            <option value="3">AUD</option>
+                            <option value="4">CAD</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group basic">
+                    <div class="input-wrapper">
+                        <label class="label" for="currency2">À</label>
+                        <select class="form-control custom-select" id="currency2">
+                            <option value="1">USD</option>
+                            <option value="1">EUR</option>
+                            <option value="2">AUD</option>
+                            <option value="3">CAD</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group basic">
+            <label class="label">Entrer le montant</label>
+            <div class="input-group mb-2">
+                <span class="input-group-text" id="basic-addon2">€</span>
+                <input type="text" class="form-control" placeholder="Entrer un montant" value="100">
+            </div>
+        </div>
+
+
+
+        <div class="form-group basic">
+            <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Échanger</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<MARQUEE direction="right" ><h3 class="m-b-10 text-danger" > STATUT DU COMPTE: BLOQUE</h3></MARQUEE>
+<!-- * Feuille d'action d'échange -->
+<div class="section mt-3">
+            <div class="section-title">Détails du Compte</div>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs capsuled" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#overview" role="tab">
+                                Mes économies
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#card" role="tab">
+                                Compte d'epargne
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#settings" role="tab">
+                                Mes dépenses
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-1">
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                         <h4 class="m-b-10 text-danger" ><class="m-b-10 text-success" >  1.600.000 €</h4>     
+                        </div>
+                        <div class="tab-pane fade" id="card" role="tabpanel">
+                           <h4 class="m-b-10 text-danger" ><class="m-b-10 text-success" >  0,00 €</h4> 
+                        </div>
+                        <div class="tab-pane fade" id="settings" role="tabpanel">
+                           <h4 class="m-b-10 text-danger" ><class="m-b-10 text-success" >  0,00 €</h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+<div class="section mt-4">
+        <div class="section-heading text-center">
+            <h2 class="title">Opérations en cours</h2>
+
+           
+        </div>
+        <div class="transactions2">
+<!-- Transactions de virement 1 -->
+
+
+
+            <a href="#" class="item">
+    <div class="detail">
+        <div>
+            <strong><?php echo $destinataire; ?></strong>
+            <p>Virement sortant</p>
+        </div>
+    </div>
+    <div class="right">
+        <span class="badge badge-warning">En Cours</span>
+        <div class="price text-danger"><?php echo $montant; ?> €</div>
+    </div>
+</a>
+
+
+
+
+    </div>
+
+
+    <!-- Transactions -->
+    <div class="section mt-4">
+        <div class="section-heading">
+            <h2 class="title">Historique</h2>
+           
+        </div>
+        <div class="transactions">
+			
+       
+           <a href="app-transaction-detail.html" class="item">
+                <div class="detail">
+                    
+                    <div>
+                        <strong>YANNIS JEAN LUC CLAUDE CHARRIER</strong>
+                        <p>Virement sortant</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="price text-danger">- 227.500 €</div>
+					<p>21 Mai 2024</p>
+					<span class="badge badge-danger">Validé</span>
+                </div>
+            </a>
+			
+            
+        </div>
+    </div>
+    <!-- * Transactions -->
+<div class="section mt-2 mb-2">
+           <div class="section-heading">
+            <h2 class="title">MON RIB</h2>
+           
+        </div>
+            <div class="card">
+
+                <div class="table-responsive">
+                    <table class="table bg-success">
+                        
+                        <tbody>
+                            <tr>
+                                <th scope="row">IBAN</th>
+                                <td>FR76 0011 1000 0000 0097 203 802 </td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Numéro de compte</th>
+                                <td>10100833329</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Code Banque</th>
+                                <td>00097</td>
+                                <td>Code Guichet</td>
+                                <td class="text-end">89002</td>
+                            </tr>
+							<tr>
+                                <th scope="row">Clé Rib</th>
+                                <td>917</td>
+                                <td>Code Swift</td>
+                                <td class="text-end">LCLFR00XXX</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    
+    <!-- Mes cartes -->
+    <div class="section full mt-4">
+        <div class="section-heading padding">
+            <h2 class="title">Mes cartes</h2>
+           
+        </div>
+
+        <!-- carrousel simple -->
+        <div class="carousel-single splide splide--loop splide--ltr splide--draggable is-active" id="splide01" style="visibility: visible;">
+            <div class="splide__track" id="splide01-track" style="padding-left: 16px; padding-right: 16px;">
+                <ul class="splide__list" id="splide01-list" style="transform: translateX(-700px);">
+
+                    <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 358px;">
+                        <!-- bloc de carte -->
+                        <div class="card-block bg-dark">
+                            <div class="card-main">
+                                <div class="card-button dropdown">
+                                    <button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown">
+                                        <ion-icon name="ellipsis-horizontal" role="img" class="md hydrated" aria-label="ellipsis horizontal"></ion-icon>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="#">
+                                            <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>Modifier
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <ion-icon name="close-outline" role="img" class="md hydrated" aria-label="close outline"></ion-icon>Supprimer
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <ion-icon name="arrow-up-circle-outline" role="img" class="md hydrated" aria-label="arrow up circle outline"></ion-icon>
+                                        </a>
+                                    </div>
+                                </div>
+								
+                                <div class="balance">
+                                        <span class="label">Statut</span>
+                                        <h5 class="title"> Valide </h5>
+                                    </div>
+                                <div class="in">
+                                    <div class="card-number">
+                                        <span class="label">Numéro de carte</span>
+                                        •••• 5937
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="card-expiry">
+                                            <span class="label">Expiration</span>
+                                            10 / 27
+                                        </div>
+                                        <div class="card-ccv">
+                                            <span class="label">CCV</span>
+                                            631
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- * bloc de carte -->
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 358px;">
+                        <!-- bloc de carte -->
+                        <div class="card-block bg-secondary">
+                            <div class="card-main">
+                                <div class="card-button dropdown">
+                                    <button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown">
+                                        <ion-icon name="ellipsis-horizontal" role="img" class="md hydrated" aria-label="ellipsis horizontal"></ion-icon>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="#">
+                                            <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>Modifier
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <ion-icon name="close-outline" role="img" class="md hydrated" aria-label="close outline"></ion-icon>Supprimer
+                                        </a>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="balance">
+                                        <span class="label">Statut</span>
+                                        <h5 class="title"> Valide </h5>
+                                    </div>
+                                <div class="in">
+                                    <div class="card-number">
+                                        <span class="label">Numéro de carte</span>
+                                        •••• 9905
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="card-expiry">
+                                            <span class="label">Expiration</span>
+                                            12 / 25
+                                        </div>
+                                        <div class="card-ccv">
+                                            <span class="label">CCV</span>
+                                            553
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+            </div>
+        </div>
+        <!-- * carrousel simple -->
+
+    </div>
+    <!-- * Mes cartes -->
+
+       
+       
+    
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+    <!-- Actualités -->
+    <div class="section full mt-4 mb-3">
+        <div class="section-heading padding">
+            <h2 class="title">Dernières actualités</h2>
+         
+        </div>
+
+        <!-- carrousel multiple -->
+        <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
+            <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
+                <ul class="splide__list" id="splide03-list" style="transform: translateX(-708px);">
+
+                    <li class="splide__slide splide__slide--clone" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone is-active is-visible" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide01">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone is-visible" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide02">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide03">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide04">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide05">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide06">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide07" aria-hidden="true" tabindex="-1">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide08">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide09">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide10">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide11" aria-hidden="false" tabindex="0">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide12" aria-hidden="true" tabindex="-1">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide13">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide14">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide15" aria-hidden="true" tabindex="-1">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide16" aria-hidden="false" tabindex="0">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="splide__slide splide__slide--clone" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide17">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide18">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide19">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide20" aria-hidden="true" tabindex="-1">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide21">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide22">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide23">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide24">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="false" tabindex="0" style="margin-right: 16px; width: 171px;" id="splide03-slide25">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;" id="splide03-slide26">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide27">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;" id="splide03-slide28">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Quelle sera la valeur du bitcoin...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Les règles que vous devez connaître en...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">10 façons faciles d'économiser de...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 171px;">
+                        <a href="#">
+                            <div class="blog-card">
+                                <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
+                                <div class="text">
+                                    <h4 class="title">Suivez l'agenda financier ...</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li></ul>
+            </div>
+        </div>
+        <!-- * carrousel multiple -->
+
+    </div>
+    <!-- * Actualités -->
+
+
+    <!-- pied de page de l'application -->
+    
+    <!-- * pied de page de l'application -->
+
+</div>
+<!-- * Capsule d'application -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-ZMp5FVw1K6Wp7I1QvAgp9/b6Os3YbP5PibJxmAKtMPrqz8UkG5TsDYyBkCiH0tv2" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2xZlFW73tv1iqLZC2i4xEL5tRE5EQ5xS" crossorigin="anonymous"></script>
+<!-- ========= JS Files =========  -->
+<!-- Bootstrap -->
+<script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+<!-- Ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- Splide -->
+<script src="assets/js/plugins/splide/splide.min.js"></script>
+<!-- Base Js File -->
+<script src="assets/js/base.js"></script>
+
+
+
+
+
+<!-- Menu inférieur de l'application -->
+<div class="appBottomMenu">
+    <a href="index.php" class="item active">
+        <div class="col">
+            <ion-icon name="home-outline" role="img" class="md hydrated" aria-label="pie chart outline"></ion-icon>
+            <strong>Accueil</strong>
+        </div>
+    </a>
+    <a a href="#" data-bs-toggle="modal" data-bs-target="#depositActionSheet" class="item">
+        <div class="col">
+            <ion-icon name="document-text-outline" role="img" class="md hydrated" aria-label="document text outline"></ion-icon>
+            <strong>Mon RIB</strong>
+        </div>
+    </a>
+    
+    <a href="#" data-bs-toggle="modal" data-bs-target="#depositActionSheet" class="item">
+        <div class="col">
+            <ion-icon name="card-outline" role="img" class="md hydrated" aria-label="card outline"></ion-icon>
+            <strong>Mes cartes</strong>
+        </div>
+    </a>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#depositActionSheet" class="item">
+        <div class="col">
+            <ion-icon name="settings-outline" role="img" class="md hydrated" aria-label="settings outline"></ion-icon>
+            <strong>Paramètres</strong>
+        </div>
+    </a>
+</div>
+<!-- * Menu inférieur de l'application -->
+
+<!-- Barre latérale de l'application -->
+<div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+    <!-- ... (le reste du code reste inchangé) ... -->
+</div>
+<!-- * Barre latérale de l'application -->
+
+<!-- Feuille d'action "Ajouter à l'écran d'accueil iOS" -->
+<div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1" role="dialog">
+    <!-- ... (le reste du code reste inchangé) ... -->
+</div>
+<!-- * Feuille d'action "Ajouter à l'écran d'accueil iOS" -->
+
+<!-- Feuille d'action "Ajouter à l'écran d'accueil Android" -->
+<div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1" role="dialog">
+    <!-- ... (le reste du code reste inchangé) ... -->
+</div>
+<!-- * Feuille d'action "Ajouter à l'écran d'accueil Android" -->
+
+
+<!-- ========= Fichiers JS ========= -->
+<!-- Bootstrap -->
+<script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+<!-- Ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- Splide -->
+<script src="assets/js/plugins/splide/splide.min.js"></script>
+<!-- Fichier JS de base -->
+<script src="assets/js/base.js"></script>
+
+<script>
+    // Ajouter à l'écran d'accueil avec un délai de 2 secondes.
+    AddtoHome("2000", "once");
+</script>
+
+</body></html>

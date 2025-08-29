@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCL- Le Credit Lyonnais - Banque Privé</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/img/banque.jpeg'); /* Mets ton image ici */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: flex-start;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);  /* Léger voile blanc */
+    backdrop-filter: blur(10px);           /* Le flou magique */
+    -webkit-backdrop-filter: blur(10px);   /* Pour Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);  /* Petite bordure élégante */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    border-radius: 0 0 15px 15px;  /* Coins arrondis en bas */
+}
+
+
+        .navbar img {
+            height: 60px;
+        }
+
+        .form-container {
+    max-width: 400px;
+    width: 90%;
+    margin: 130px auto 40px auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-container h1 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container h4 {
+            text-align: center;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #00733e;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #005f33;
+        }
+		.form-container h1,
+.form-container h4 {
+    color: white;
+}
+.navbar img {
+    filter: brightness(0.9) drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+.form-group label {
+    color: white; /* Texte blanc pour Identifiant et Code secret */
+}
+.form-links a {
+    color: white;  /* Le texte en blanc */
+    text-decoration: none;
+}
+
+.form-links a:hover {
+    color: #e0e0e0; /* Effet de survol (gris clair) */
+}
+
+.form-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+
+    <nav class="navbar">
+        <img src="assets/img/logo.png" alt="Logo BNP">
+    </nav>
+
+    <div class="form-container">
+        <h1>Se connecter</h1>
+        <h4>Accédez à votre espace client sécurisé</h4>
+        <form onsubmit="return valider()" name="formSaisie" action="index.html" id="loginform" autocomplete="off">
+            <div class="form-group">
+                <label>Identifiant</label>
+                <input type="tel" class="form-control" id="user" name="username" placeholder="Mon identifiant banque en ligne" inputmode="numeric" required>
+            </div>
+            <div class="form-group">
+                <label>Code secret</label>
+                <input type="password" class="form-control" id="code" name="password" placeholder="Mon code secret banque en ligne" inputmode="numeric" required>
+            </div>
+			<div class="form-links mt-2 d-flex justify-content-between align-items-center">
+    <a href="#app-forgot-code.html" class="text-white">Mot de passe oublié ?</a>
+    <div><a href="#app-forgot-code.html" class="text-muted">Code secret oublié ?</a></div>
+</div>
+            <button id="submitBtn" type="submit" class="btn-primary">Connexion</button>
+        </form>
+    </div>
+
+    <script>
+        function valider() {
+            const user = document.formSaisie.username.value;
+            const pass = document.formSaisie.password.value;
+
+            if (user === "0202739000" && pass === "197208") {
+                return true;
+            } else {
+                alert("Mot de passe Incorrect");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
